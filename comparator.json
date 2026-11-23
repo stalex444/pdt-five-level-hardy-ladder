@@ -1,0 +1,15 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "HardyFive.planar_decomposition",
+    "HardyFive.real_endpoints_all_spectra",
+    "HardyFive.Spectator.spectator_curve_maximum"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

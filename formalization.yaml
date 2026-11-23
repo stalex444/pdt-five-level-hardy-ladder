@@ -1,0 +1,82 @@
+version: v0.4
+project:
+  name: Real Measurements and Sharp Pairing in the Five-Level Hardy Ladder
+  description: >-
+    For each complex terminal two-plane in dimension five, two real orthonormal
+    terminal frames preserve all five coordinate weights and bracket the
+    compressed two-step Hardy success for every positive Schmidt spectrum.
+    The same two frames work throughout this family of spectra. For spectra
+    proportional to (s,2,3,4,5) with 0<s≤2, the exact maximum at unrestricted
+    endpoint ranks is attained by the real pairs (2,4) and (3,5).
+  authors: [Stephanie Alexander]
+  responsible_maintainers: [Stephanie Alexander]
+  license: MIT
+repository:
+  role: substantive-development
+classification:
+  arxiv: [quant-ph, math.OC]
+  msc2020: [81P45, 90C22]
+sources:
+  - title: Real measurements and sharp pairing in the five-level Hardy ladder
+    authors: [Stephanie Alexander]
+    type: original-proof
+    relationship: other
+    location: README.md
+    note: Written Hardy application, Gram decomposition, matrix score, and semidefinite certificate.
+  - title: A Note on Extreme Correlation Matrices
+    authors: [Chi-Kwong Li, Bit-Shun Tam]
+    type: paper
+    relationship: background
+    author_endorsement: not-contacted
+    id: https://doi.org/10.1137/S0895479892240683
+    note: Classical fixed-diagonal symmetric perturbation method underlying the rank reduction.
+  - title: On the Rank of Extreme Matrices in Semidefinite Programs and the Multiplicity of Optimal Eigenvalues
+    authors: [Gábor Pataki]
+    type: paper
+    relationship: background
+    author_endorsement: not-contacted
+    id: https://doi.org/10.1287/moor.23.2.339
+    note: General rank bounds for semidefinite extreme points.
+  - title: PDT coordinate-deletion certificate for Hardy endpoints
+    authors: [Stephanie Alexander]
+    type: original-proof
+    relationship: other
+    location: HardySpectator.lean (row_le_fit and endpoint_deletion_bound)
+    note: The endpoint row fit and deletion argument are adapted in HardySpectator.lean alongside the rank count from HardyRankOne.lean.
+related_formalizations:
+  - id: https://palomar-registry.org/entry.html?id=PALOMAR-2026-11-21-000002
+    relationship: builds-on
+    note: Registered four-level predecessor and the reduction of the five-zero experiment to one terminal plane.
+status:
+  scope: Five positive Schmidt coordinates, complex terminal rank two, all five row weights fixed, every positive spectrum simultaneously. Sharp endpoint maximum at all ranks on the specified five-level curve.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: [propext, Classical.choice, Quot.sound]
+automation:
+  methods:
+    - method: agent
+      models: [OpenAI GPT-6]
+      framework: OpenAI Codex in ChatGPT Work Mode
+      tool_setup: Pinned Lean 4 and Mathlib, Lake comparator, Nanoda, and exact rational Python replay.
+      cost: {wall_time: not tracked, spend_usd: not tracked, hardware: local machine}
+      prompting_notes: Stephanie Alexander selected the five-level two-step Hardy problem as the successor to her quartic-gate entry.
+  spend_usd: not tracked
+  notes: AI-assisted mathematical development, formalization, documentation and local verification.
+fidelity:
+  divergences: >-
+    The uniform real-frame statement uses the three compressed matrices in the
+    exact Hardy objective. The curve theorem optimizes over all orthonormal endpoint
+    families satisfying the fifth-power orthogonality constraint. The earlier conversion from six binary measurements
+    and five zero probabilities is invoked in the written proof. The semidefinite
+    formulation and the strict seven-percent slice certificate are accompanying
+    mathematical and computational results. The full five-level ceiling is open.
+review:
+  status: self-assessed
+  reviewers: []
+  notes: Local dual-kernel comparator accepted all three targets. The GitHub Actions history records hosted preflights. Editorial review is separate.
+alignment:
+  namespace: HardyFive
+  statements:
+    - {source: Two planar centered Gram factors at the original five row lengths, lean: HardyFive.planar_decomposition, module: Solution, status: proved}
+    - {source: Common real terminal frames bracket every positive spectrum, lean: HardyFive.real_endpoints_all_spectra, module: Solution, status: proved}
+    - {source: Sharp normalized Hardy endpoint maximum on the five-level spectator curve, lean: HardyFive.Spectator.spectator_curve_maximum, module: Solution, status: proved}
